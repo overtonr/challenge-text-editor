@@ -89,3 +89,5 @@ This challenge is graded based on the following criteria:
   * Application must have a generated `manifest.json` using the `WebpackPwaManifest` plug-in
 
   * Can be installed as a Progressive Web Application
+  npm install
+  npm start:dev
