@@ -18,7 +18,33 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
+      //Generate HTML file
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'Text Editor'
+      }),
+      //Custom service worker: given by starter code (if default:GenerateSW)
+      new InjectManifest({
+        swSrc: './src-sw.js', //source
+        swDest: 'src-sw.js', //destination (resulting file)
+      }),
+      //Create manifest (makes application installable)
+      new WebpackPwaManifest({
+        name: 'Just Another Text Editor',
+        short_name: 'JATE',
+        description: 'PWA text editor',
+        background_color: '#272822',
+        theme_color: '#31a9e1',
+        start_url: './',
+
+        icons: [
+          {
+            src: path.resolve('/favicon.ico'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+      }),
     ],
 
     module: {
